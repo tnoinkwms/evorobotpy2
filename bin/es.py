@@ -12,7 +12,6 @@
    with the commands: cd ./evorobotpy/lib; python3 setupevonet.py build_ext –inplace; cp net*.so ../bin 
 """
 
-
 import numpy as np
 import configparser
 import argparse
@@ -152,6 +151,7 @@ def main(argv):
         from policy import ErPolicy
         policy = ErPolicy(env, args.fileini, args.seed, test)
     elif "Bullet" in environment:             # Pybullet environment 
+        sys.path.append('/Users/tnoinkwms/code/AIgym/')
         import gym
         from gym import spaces
         import pybullet
@@ -165,6 +165,7 @@ def main(argv):
         from policy import GymPolicy
         policy = GymPolicy(env, args.fileini, args.seed, test)      
     else:                                       # OpenAi Gym environment
+        sys.path.append('/Users/tnoinkwms/code/AIgym/gym/')
         import gym
         from gym import spaces
         env = gym.make(environment)               
